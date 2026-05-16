@@ -80,7 +80,24 @@ npm run build && npm start
 { "status": "ok", "timestamp": "2025-01-01T00:00:00.000Z" }
 ```
 
-## Deploying on your own server
+## Deploying with Docker
+
+```bash
+cp .env.example .env   # fill in your SMTP credentials
+docker compose up -d
+```
+
+That's it. The container restarts automatically on reboot (`restart: unless-stopped`).
+
+```bash
+docker compose logs -f          # tail logs
+docker compose down             # stop
+docker compose up -d --build    # rebuild after code changes
+```
+
+---
+
+## Deploying on your own server (without Docker)
 
 ### With PM2
 
