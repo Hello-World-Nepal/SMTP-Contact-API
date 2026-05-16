@@ -82,17 +82,17 @@ npm run build && npm start
 
 ## Deploying with Docker
 
+This service is orchestrated via the root `docker-compose.yml` alongside Nginx. Run from the repo root:
+
 ```bash
-cp .env.example .env   # fill in your SMTP credentials
+cp smtp-contact-api/.env.example smtp-contact-api/.env   # fill in SMTP credentials
 docker compose up -d
 ```
 
-That's it. The container restarts automatically on reboot (`restart: unless-stopped`).
-
 ```bash
-docker compose logs -f          # tail logs
-docker compose down             # stop
-docker compose up -d --build    # rebuild after code changes
+docker compose logs -f smtp-contact-api   # tail logs
+docker compose down                       # stop all
+docker compose up -d --build              # rebuild after code changes
 ```
 
 ---

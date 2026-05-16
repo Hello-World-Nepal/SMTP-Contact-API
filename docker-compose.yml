@@ -2,15 +2,12 @@ services:
   smtp-contact-api:
     build: .
     restart: unless-stopped
-    ports:
-      - "3001:3001"
-    environment:
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=${SMTP_PORT:-587}
-      - SMTP_SECURE=${SMTP_SECURE:-false}
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASS=${SMTP_PASS}
-      - CONTACT_RECIPIENT=${CONTACT_RECIPIENT}
-      - FROM_NAME=${FROM_NAME:-Contact Form}
-      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
-      - PORT=3001
+    env_file: .env
+    expose:
+      - "3001"
+    networks:
+      - helloworldnepal-net
+
+networks:
+  helloworldnepal-net:
+    external: true
